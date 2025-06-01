@@ -1,0 +1,88 @@
+spring:
+  application:
+    name: shop-app
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  datasource:
+    url: jdbc:mysql://localhost:3306/Clothing?useSSL=false&serverTimezone=Asia/Ho_Chi_Minh&allowPublicKeyRetrieval=true
+    username: root
+    password: thin2001
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: nguyenthin34hd@gmail.com
+    password: gjub fqjo frte bvwk
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+    from: nguyenthin34hd@gmail.com
+    data:
+      redis:
+        #spring.data.redis.use-redis-cache
+        use-redis-cache: true
+        host: ${REDIS_HOST:localhost} # Default to 'localhost' if not provided
+        #host: ${REDIS_HOST:ubuntu-server-01.local} # Default to 'localhost' if not provided
+        port: ${REDIS_PORT:6379}      # Default to 6379 if not provided
+
+  #  flyway:
+#    #đường dẫn đến thư mục chứa các flyway
+#    locations: classpath:/db/migration,classpath:/dev/db/migration
+#    #phiên bản base line sẽ = 1 và không thực hiện bất kỳ thay đổi nào trong DB
+#    baseline-on-migrate: true
+#    baseline-version: 0
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.MySQL5Dialect
+#        format_sql: true
+#        boot:
+#          allow_jdbc_metadata_access: false
+#  data:
+#    redis:
+#      #spring.data.redis.use-redis-cache
+#      use-redis-cache: true
+#      host: ${REDIS_HOST:localhost} # Default to 'localhost' if not provided
+#      #host: ${REDIS_HOST:ubuntu-server-01.local} # Default to 'localhost' if not provided
+#      port: ${REDIS_PORT:6379}      # Default to 6379 if not provided
+#  kafka:
+#
+#    bootstrap-servers: ${KAFKA_BROKER_SERVER:localhost}:${KAFKA_BROKER_PORT:9092}
+#    producer:
+#      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+#      #transaction-id-prefix: tx.
+#      properties:
+#        "[spring.json.type.mapping]": commodity:com.datn.shop_app.entity.Commodity;
+#    consumer:
+#      value-deserializer: org.apache.kafka.common.serialization.ByteArrayDeserializer
+
+server:
+  port: 8080
+
+api:
+  prefix: /api
+
+jwt:
+  expiration: 259200 #30 days = 30 * 24 * 60 * 60
+  expiration-refresh-token: 5184000 #60 days = 60 * 24 * 60 * 60
+  secretKey: TaqlmGv1iEDMRiFp/pHuID1+T84IABfuA0xXh4GhiUI=
+
+schedule:
+  everyday: 59 59 23 * * ?
+
+domain:
+  front-end: http://localhost:5173/
+
+payos:
+  PAYOS_CLIENT_ID: b5e81fd3-6274-4d7c-9152-0f49d05c3c77
+  PAYOS_API_KEY: a48cd7e5-1c80-4bb3-bcc7-3b1ee20c1ca3
+  PAYOS_CHECKSUM_KEY: e55701f12c47e8e5b7d10206f4fd9f7686fed329e0353451249dc5d1fdc43d8b
